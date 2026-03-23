@@ -8,7 +8,7 @@ export interface ResultPanelProps {
   goal: number;
 }
 
-export const ResultPanel = memo(function ResultPanel({ result, goal }: ResultPanelProps) {
+export const ResultPanel = memo(function ResultPanel({ result }: ResultPanelProps) {
   if (!result) {
     return (
       <section
