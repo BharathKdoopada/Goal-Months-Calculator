@@ -1,3 +1,4 @@
+import { Toaster } from 'sonner';
 import { useGoalCalculator } from './hooks/useGoalCalculator';
 import { InputField } from './components/InputField';
 import { RateSlider } from './components/RateSlider';
@@ -9,6 +10,7 @@ export default function GoalCalculator() {
 
   return (
     <div className="max-w-3xl mx-auto px-5 py-12">
+      <Toaster position="top-center" expand={false} richColors />
       <header className="mb-10 text-center sm:text-left">
         <h1 className="font-serif text-4xl sm:text-5xl font-normal leading-tight mb-3">
           Goal Months Calculator

@@ -1,4 +1,5 @@
-import { useState, useMemo, useCallback, useRef } from 'react';
+import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
+import { toast } from 'sonner';
 import { debounce } from '../utils/debounce';
 import { computeGoal } from '../utils/computeGoal';
 import type { CalculatorInputs, GoalResult } from '../types/calculator';
@@ -28,6 +29,15 @@ export function useGoalCalculator(): UseGoalCalculatorReturn {
   const handleGoal = useCallback((v: number) => debounced('goal', v), [debounced]);
   const handleMonthly = useCallback((v: number) => debounced('monthly', v), [debounced]);
   const handleRate = useCallback((v: number) => setRate(v), []);
+
+  // Show toast if monthly savings exceed the goal
+  useEffect(() => {
+    if (inputs.monthly > inputs.goal) {
+      toast.error('Monthly savings cannot exceed the total goal amount', {
+        id: 'savings-exceed-goal', // Prevents duplicate toasts
+      });
+    }
+  }, [inputs.goal, inputs.monthly]);
 
   const result = useMemo(
     () => computeGoal(inputs.goal, inputs.monthly, rate),

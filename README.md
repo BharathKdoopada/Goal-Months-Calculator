@@ -27,4 +27,4 @@ Keyboard navigation is fully supported, including using arrow keys for the slide
 
 From a UX perspective, I kept things simple and clean. The UI uses a minimal theme and is fully responsive, so it works well on both mobile and desktop. The results update in real time as users interact with the inputs, which makes the tool feel more interactive.
 
-I also handled edge cases, like when the goal isn’t realistically achievable with the given inputs, and made sure the output is always formatted in INR for better clarity.
+I also handled edge cases, like when the goal isn’t realistically achievable with the given inputs or when monthly savings exceed the goal amount (where I added a real-time error toast notification). I made sure the output is always formatted in INR for better clarity.
